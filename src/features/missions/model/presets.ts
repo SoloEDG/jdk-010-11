@@ -26,7 +26,7 @@ export const missions = [
     name: "寻找焦点",
     tag: "透镜成像",
     description: "移动接收屏，使平行光经凸透镜后汇聚成一个清晰光斑。",
-    condition: "接收 ≥ 80% 光能，RMS 半径 ≤ 3 mm",
+    condition: "经凸透镜后接收 ≥ 80% 光能，RMS 半径 ≤ 3 mm",
     doc: {
       version: 1,
       items: [
@@ -41,7 +41,7 @@ export const missions = [
     name: "转折的光",
     tag: "镜面反射",
     description: "调整镜面方向，把光束转向上方的接收屏。",
-    condition: "接收屏捕获 ≥ 80% 光源能量",
+    condition: "经平面镜反射后，接收 ≥ 80% 光源能量",
     doc: {
       version: 1,
       items: [

@@ -11,6 +11,8 @@ export function trace(doc: LabDocument): TraceResult {
         d = ray.direction,
         inside: string | null = null,
         power = ray.power;
+      // 本条光线实际经过（发生相互作用）的器件，随光线传播逐条累积
+      const path = new Set<string>();
       for (let bounce = 0; bounce < 32; bounce++) {
         const hit = nearestSurface(doc.items, o, d);
         const dest = hit?.point ?? add(o, mul(d, 1800));
@@ -30,9 +32,11 @@ export function trace(doc: LabDocument): TraceResult {
             power,
             wavelength: source.wavelength,
             source: source.id,
+            path: [...path],
           });
           break;
         }
+        path.add(e.id);
         if (e.kind === "mirror") d = reflect(d, hit.normal);
         if (e.kind === "lens") {
           const axis = direction(e.angle - 90),

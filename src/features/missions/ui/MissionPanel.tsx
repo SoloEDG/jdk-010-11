@@ -46,7 +46,7 @@ export function MissionPanel({
       <small className={evaluation.complete ? "success" : "muted"}>
         {evaluation.complete
           ? "实验完成 · 已达到目标"
-          : "探索中 · 调整器件观察变化"}
+          : `探索中 · ${evaluation.reason}`}
       </small>
       <button className="reset-mission" onClick={() => onChoose(mission.id)}>
         重置本次实验 ↗

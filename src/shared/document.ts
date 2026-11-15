@@ -32,6 +32,11 @@ export interface ScreenHit {
   power: number;
   wavelength: number;
   source: string;
+  /**
+   * 这条光线在到达接收屏之前实际相互作用过的器件 id。
+   * 按光线逐条记录：光路相交时不会互相借用经过记录。
+   */
+  path: string[];
 }
 export interface TraceResult {
   segments: Segment[];
